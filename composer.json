@@ -1,0 +1,16 @@
+{
+  "name": "test/example-com-api-data-provider",
+  "type": "library",
+  "description": "",
+  "authors": [
+      {
+          "name": "Aleksey Leshchuk",
+          "email": "leshchuk05@gmail.com"
+      }
+  ],
+  "require": {
+    "psr/http-message": "^1.0",
+    "psr/http-factory": "^1.0",
+    "psr/http-client": "^1.0"
+  }
+}
