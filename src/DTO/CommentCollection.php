@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace ExampleComApiDataProvider\DTO;
 
-use ExampleComApiDataProvider\DTO\Interfaces\CommentCollectionInterface;
-use ExampleComApiDataProvider\DTO\Interfaces\CommentInterface;
+use ExampleComApiDataProvider\Interfaces\CommentCollectionInterface;
+use ExampleComApiDataProvider\Interfaces\CommentInterface;
 
 /**
  * Class CommentCollection

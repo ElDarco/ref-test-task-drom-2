@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ExampleComApiDataProvider\DTO\Interfaces;
+namespace ExampleComApiDataProvider\Interfaces;
 
 /**
  * Interface CommentInterface
