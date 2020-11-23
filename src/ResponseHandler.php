@@ -31,7 +31,7 @@ class ResponseHandler implements ResponseHandlerInterface
         ResponseInterface $response
     ): CommentCollectionInterface {
         $commentCollection = new CommentCollection();
-        $responseBody = json_decode($response->getBody()->getContents());
+        $responseBody = json_decode($response->getBody()->getContents(), true);
         if (array_key_exists('comments', $responseBody)) {
             foreach ($responseBody['comments'] as $rawComment) {
                 if (!array_key_exists('id', $rawComment)) {
@@ -63,7 +63,7 @@ class ResponseHandler implements ResponseHandlerInterface
         ResponseInterface $response,
         CommentInterface $comment
     ): CommentInterface {
-        $responseBody = json_decode($response->getBody()->getContents());
+        $responseBody = json_decode($response->getBody()->getContents(), true);
         if (array_key_exists('comment', $responseBody)) {
             if (array_key_exists('id', $responseBody['comment'])) {
                 $comment
