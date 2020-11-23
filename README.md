@@ -26,6 +26,20 @@ $httpClient = new HttpClientPSR18();
 $dataProvider = new ExampleComApiDataProvider/DataProvider($httpClient, $requestBuilder, $responseHandler);
 ```
 
+Пример использования в совокупности с бизнес логикой,
+```
+//Где-то в приложении появляется сущность или модель реализующая интерфейс CommentInterface
+//Например
+$comment = $this->getEm()->getRepository(UserComment::class)->find(['критерии поиска']);
+
+//Создаем провайдер
+$dataProvider = new ExampleComApiDataProvider/DataProvider($httpClient, $requestBuilder, $responseHandler);
+$comment = $dataProvider->publishComment($comment);
+
+//Сохраняем обновленную сущность в базе
+$this->getEm()->persist($comment);
+```
+
 Вспомогательные классы:
 
 Comment::class - класс реализующий интерфейс CommentInterface, 
@@ -33,6 +47,12 @@ Comment::class - класс реализующий интерфейс CommentInt
 
 CommentCollection::class - класс реализующий интерфейс CommentCollectionInterface, 
 представляет из себя объект для хранения множества CommentInterface, для итерации оных
+
+----
+
+Замечания к самому себе:
+1. Уже в последний момент когда я описывал документацию я подумал что было бы неплохо передавать в фукнции провайдера исходные комментарии по ссылке.
+2. Неплохо было бы доработать RequestBuilder в полноценный Билдер (имею в виду паттерн) и создавать запросы по кусочкам.
 
 ----
 
