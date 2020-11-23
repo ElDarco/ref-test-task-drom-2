@@ -13,10 +13,21 @@
       "ExampleComApiDataProvider\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "UnitTest\\": "tests/unit/"
+    }
+  },
   "require": {
     "psr/http-message": "^1.0",
     "psr/http-factory": "^1.0",
     "psr/http-client": "^1.0",
     "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.4"
+  },
+  "scripts": {
+    "unit-test-run": "php vendor/bin/phpunit tests/unit/."
   }
 }

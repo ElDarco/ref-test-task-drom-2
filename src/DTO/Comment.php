@@ -30,9 +30,9 @@ class Comment implements CommentInterface
     /**
      * @inheritDoc
      */
-    function getId(): int
+    function getId(): ?int
     {
-        return $this->id;
+        return $this->id ?? null;
     }
 
     /**

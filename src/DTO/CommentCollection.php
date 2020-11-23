@@ -34,5 +34,6 @@ class CommentCollection implements CommentCollectionInterface
     public function add(CommentInterface $comment): CommentCollectionInterface
     {
         $this->storage[] = $comment;
+        return $this;
     }
 }

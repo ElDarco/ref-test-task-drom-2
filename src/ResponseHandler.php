@@ -55,21 +55,24 @@ class ResponseHandler implements ResponseHandlerInterface
      * Метод ожидает что ответ от веб-сервиса будет иметь вид:
      * {"comment": {"id": number, "name": string, "text": string}}
      * @param ResponseInterface $response
-     * @param CommentInterface $comment
+     * @param CommentInterface|null $comment
      * @return CommentInterface
      * @throws InvalidCommentException
      */
     public function handleSingleComment(
         ResponseInterface $response,
-        CommentInterface $comment
+        CommentInterface $comment = null
     ): CommentInterface {
         $responseBody = json_decode($response->getBody()->getContents(), true);
         if (array_key_exists('comment', $responseBody)) {
             if (array_key_exists('id', $responseBody['comment'])) {
+                if (!$comment) {
+                    $comment = new Comment();
+                }
                 $comment
-                    ->setId((int) $responseBody['id'])
-                    ->setName($responseBody['name'] ?? '')
-                    ->setText($responseBody['text'] ?? '');
+                    ->setId((int) $responseBody['comment']['id'])
+                    ->setName($responseBody['comment']['name'] ?? '')
+                    ->setText($responseBody['comment']['text'] ?? '');
                 return $comment;
             }
             throw new InvalidCommentException(

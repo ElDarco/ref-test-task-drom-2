@@ -12,9 +12,9 @@ namespace ExampleComApiDataProvider\Interfaces;
 interface CommentInterface
 {
     /**
-     * @return int
+     * @return int|null
      */
-    function getId(): int;
+    function getId(): ?int;
 
     /**
      * @param int $id

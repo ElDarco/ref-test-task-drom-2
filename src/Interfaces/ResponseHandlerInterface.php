@@ -27,11 +27,11 @@ interface ResponseHandlerInterface
      * Description: Данный метод должен реализовать обработку ответа
      * модифицируя переданный Comment
      * @param ResponseInterface $response
-     * @param CommentInterface $comment
+     * @param CommentInterface|null $comment
      * @return CommentInterface
      */
     public function handleSingleComment(
         ResponseInterface $response,
-        CommentInterface $comment
+        CommentInterface $comment = null
     ): CommentInterface;
 }
